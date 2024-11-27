@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: spring-graphql
+  graphql:
+    graphiql:
+      enabled: true
+    cors:
+      allowed-origins: *
