@@ -2,6 +2,24 @@
 type Query {
     allBooks: [Book]
     findOne(id: ID!): Book
+    allPerson: [Person]
+}
+
+type Person {
+    id: ID!
+    firstName: String
+    lastName: String
+    email: String
+    phoneNumber: String
+    address: Address
+}
+
+type Address {
+    id: ID!
+    address: String
+    city: String
+    state: String
+    zip: String
 }
 
 type Book {

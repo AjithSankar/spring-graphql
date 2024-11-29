@@ -4,5 +4,14 @@ spring:
   graphql:
     graphiql:
       enabled: true
-    cors:
-      allowed-origins: *
+#    cors:
+#      allowed-origins: *
+  datasource:
+    name: people
+    generate-unique-name: false
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    show-sql: true
