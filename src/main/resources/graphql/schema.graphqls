@@ -3,6 +3,7 @@ type Query {
     allBooks: [Book]
     findOne(id: ID!): Book
     allPerson: [Person]
+    allPeoplePaged(page: Int, size: Int): [Person]
 }
 
 type Person {
