@@ -23,9 +23,16 @@ public class SampleDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        long count = repository.count();
+        if (count <= 0) {
+            initializeData(1000000);
+        }
 
+    }
+
+    private void initializeData(int count) {
         // create 100 rows of people in the database
-        List<Person> people = IntStream.rangeClosed(1, 100)
+        List<Person> people = IntStream.rangeClosed(1, count)
                 .mapToObj(i -> new Person(
                         faker.name().firstName(),
                         faker.name().lastName(),
