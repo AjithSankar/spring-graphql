@@ -6,6 +6,10 @@ type Query {
     allPeoplePaged(page: Int, size: Int): [Person]
 }
 
+type Mutation {
+    updatePerson(id: Int, phoneNumber: String): Person
+}
+
 type Person {
     id: ID!
     firstName: String
