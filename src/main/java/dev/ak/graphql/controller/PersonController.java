@@ -45,4 +45,10 @@ public class PersonController {
         }
         return person;
     }
+
+    @MutationMapping(value = "deletePerson")
+    public Integer update(@Argument int id) {
+        personRepository.deleteById(id);
+        return id;
+    }
 }

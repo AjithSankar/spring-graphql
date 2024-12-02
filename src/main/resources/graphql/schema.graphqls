@@ -8,6 +8,7 @@ type Query {
 
 type Mutation {
     updatePerson(id: Int, phoneNumber: String): Person
+    deletePerson(id: Int): Int
 }
 
 type Person {
