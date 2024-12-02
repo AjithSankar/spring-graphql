@@ -1,5 +1,6 @@
 package dev.ak.graphql.controller;
 
+import dev.ak.graphql.entity.Address;
 import dev.ak.graphql.entity.Person;
 import dev.ak.graphql.repository.PersonRepository;
 import org.springframework.data.domain.Page;
@@ -32,7 +33,38 @@ public class PersonController {
         return personRepository.findAll(pageRequest);
     }
 
+    @MutationMapping(value = "createPerson")
+    public Person create(@Argument Person input) {
+        Person person = new Person();
+        person.setFirstName(input.getFirstName());
+        person.setLastName(input.getLastName());
+        person.setEmail(input.getEmail());
+        person.setPhoneNumber(input.getPhoneNumber());
+        personRepository.save(person);
+
+        return person;
+    }
+
     @MutationMapping(value = "updatePerson")
+    public Person updatePerson(@Argument Person input) {
+        Person person = null;
+        Optional<Person> optionalPerson = personRepository.findById(input.getId());
+        if (optionalPerson.isPresent()) {
+            person = optionalPerson.get();
+            person.setFirstName(input.getFirstName());
+            person.setLastName(input.getLastName());
+            person.setEmail(input.getEmail());
+            person.setPhoneNumber(input.getPhoneNumber());
+            Address address = input.getAddress();
+            person.setAddress(new Address(address.getAddress(), address.getCity(), address.getState(), address.getZip()));
+        }
+        if (person != null) {
+            personRepository.save(person);
+        }
+        return person;
+    }
+
+    @MutationMapping(value = "updatePersonById")
     public Person update(@Argument int id, @Argument String phoneNumber) {
         Person person = null;
         Optional<Person> optionalPerson = personRepository.findById(id);

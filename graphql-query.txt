@@ -1,0 +1,55 @@
+# Create new person
+mutation {
+  createPerson(
+    input:
+    {
+        firstName: "Ajith",
+        lastName: "Sankar",
+        email: "Ajith.sankar@gmail.com",
+        phoneNumber: "7123456890"
+    }) {
+        id
+        firstName
+        lastName
+        email
+        phoneNumber
+        address {
+          address
+          city
+          zip
+        }
+  }
+}
+
+# Update Person
+mutation {
+  updatePerson(
+    input:
+    {
+      id: 1012752,
+      firstName: "Ajith",
+      lastName: "Sankar",
+      email: "Ajith.sankar@gmail.com",
+      phoneNumber: "7123456890",
+      address:
+      {
+        address: "No.1, Chennai Central"
+        city: "Chennai"
+        state: "TamilNadu"
+        zip: "600001"
+      }
+    }
+  ) {
+    id
+    firstName
+    lastName
+    email
+    phoneNumber
+    address {
+      address
+      city
+      zip
+    }
+  }
+}
+

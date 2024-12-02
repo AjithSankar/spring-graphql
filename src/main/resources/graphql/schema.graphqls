@@ -7,8 +7,37 @@ type Query {
 }
 
 type Mutation {
-    updatePerson(id: Int, phoneNumber: String): Person
+    createPerson(input: CreatePersonInput!): Person!
+    updatePerson(input: UpdatePersonInput!): Person!
+    updatePersonById(id: Int, phoneNumber: String): Person!
     deletePerson(id: Int): Int
+}
+
+#Input for creating new Person
+input CreatePersonInput {
+    firstName: String!
+    lastName: String!
+    phoneNumber: String!
+    email: String!
+    address: AddressInput
+}
+
+#Input for updating Person
+input UpdatePersonInput {
+    id: ID!
+    firstName: String
+    lastName: String
+    phoneNumber: String
+    email: String
+    address: AddressInput
+}
+
+#Input for Address
+input AddressInput {
+    address: String
+    city: String
+    state: String
+    zip: String
 }
 
 type Person {
