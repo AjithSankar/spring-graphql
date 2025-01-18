@@ -1,1 +1,1 @@
-#### Spring boot GraphQL
+#### Spring GraphQL
